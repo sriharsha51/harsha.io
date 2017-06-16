@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="ToDoApp">
+<head>
+
+  <title>To do App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+  <div class="container">
+    <div class="row col-sm-12" ng-controller="TodoCtrl as Ctrl">
+
+
+      <h1 class="jumbotron">To do App</h1>
+      <p>Add a todo:</p>
+      <input class="input-group" type="text" name="todoinput" placeholder="Add a todo" ng-model="Ctrl.inputItem"/>
+      <br>
+      <button class="btn btn-success" ng-click="Ctrl.addItem()">Add</button>
+      <button ng-hide="Ctrl.boolean" class="btn btn-warning" ng-click="Ctrl.editItems()">Edit</button>
+      <button ng-show="Ctrl.boolean" class="btn btn-warning" ng-click="Ctrl.editItems()">Done</button>
+      <h2>Todo list</h2>
+      <ol>
+        <li ng-repeat="item in Ctrl.listItems track by $index"><span ng-hide="Ctrl.boolean" ng-bind="item"></span></span><button ng-hide="Ctrl.boolean" class="btn btn-danger" style="padding:0px;margin:3px;" ng-click="Ctrl.deleteItem($index)">Delete</button><input ng-show="Ctrl.boolean" type="text" ng-model="item"/></li>
+      </ol>
+
+
+    </div>
+
+  </div>
+
+
+  <script src="angular.js"></script>
+  <script src="todo.js"></script>
+  <script src="jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="bootstrap.min.js"></script>
+</body>
+
+</html>
